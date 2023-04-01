@@ -1,5 +1,6 @@
 import 'package:demo/screens/details.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:pinput/pinput.dart';
 
 import '../controller/auth_controller.dart';
@@ -110,6 +111,12 @@ class _PinputExampleState extends State<PinputExample> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              SvgPicture.network(
+                'https://www.wingmanweb.com/wp-content/uploads/2022/05/Logo-Main-01-1.svg',
+                // 'assets/pv.png',
+                width: 200,
+                height: 200,
+              ),
               Directionality(
                 // Specify direction if desired
                 textDirection: TextDirection.ltr,
@@ -213,6 +220,17 @@ class _PinputExampleState extends State<PinputExample> {
             ],
           ),
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          // pinController.clear();
+          Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(
+                builder: (context) => DetailsPage(jwt: "random"),
+              ));
+        },
+        child: const Icon(Icons.clear),
       ),
     );
   }

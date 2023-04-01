@@ -1,6 +1,7 @@
 import 'package:demo/controller/auth_controller.dart';
 import 'package:demo/screens/verify.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class PhoneNumberPage extends StatefulWidget {
   PhoneNumberPage({Key? key}) : super(key: key);
@@ -33,8 +34,9 @@ class _PhoneNumberPageState extends State<PhoneNumberPage> {
                 SizedBox(
                   height: 120,
                 ),
-                Image.asset(
-                  'assets/pv.png',
+                SvgPicture.network(
+                  'https://www.wingmanweb.com/wp-content/uploads/2022/05/Logo-Main-01-1.svg',
+                  // 'assets/pv.png',
                   width: 200,
                   height: 200,
                 ),

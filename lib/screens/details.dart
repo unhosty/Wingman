@@ -1,6 +1,7 @@
 import 'package:demo/controller/auth_controller.dart';
 import 'package:demo/screens/home.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 class DetailsPage extends StatelessWidget {
   DetailsPage({required this.jwt, super.key});
@@ -13,6 +14,14 @@ class DetailsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          // pinController.clear();
+          Navigator.pushReplacement(
+              context, MaterialPageRoute(builder: (context) => HomePage()));
+        },
+        child: const Icon(Icons.clear),
+      ),
       body: Center(
         child: Form(
           key: formKey,
@@ -22,6 +31,12 @@ class DetailsPage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
+                SvgPicture.network(
+                  'https://www.wingmanweb.com/wp-content/uploads/2022/05/Logo-Main-01-1.svg',
+                  // 'assets/pv.png',
+                  width: 200,
+                  height: 200,
+                ),
                 TextFormField(
                   validator: (value) {
                     if (value!.isEmpty) return "Name cannot be empty";
