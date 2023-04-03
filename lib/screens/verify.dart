@@ -2,7 +2,7 @@ import 'package:demo/screens/details.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:pinput/pinput.dart';
-
+import '../dialog.dart';
 import '../controller/auth_controller.dart';
 import 'home.dart';
 
@@ -190,7 +190,8 @@ class _PinputExampleState extends State<PinputExample> {
                     if (res != null) {
                       if (res['status']) {
                         if (res['profile_exists']) {
-                          print("profile exists");
+                      dialogBBox(context, "Verification Successful");
+                          // print("profile exists");
                           Navigator.pushReplacement(
                             context,
                             MaterialPageRoute(
@@ -198,7 +199,8 @@ class _PinputExampleState extends State<PinputExample> {
                             ),
                           );
                         } else {
-                          print("profile does not exists");
+                      dialogBBox(context, "Profile does not exists");
+                          // print("profile does not exists");
                           Navigator.pushReplacement(
                               context,
                               MaterialPageRoute(
@@ -208,10 +210,12 @@ class _PinputExampleState extends State<PinputExample> {
                           // TODO: send to create profile - name and email
                         }
                       } else {
-                        print(res['response']);
+                      dialogBBox(context, res['response']);
+                        // print(res['response']);
                       }
                     } else {
-                      print("error");
+                      dialogBBox(context, "Something went wrong");
+                      // print("error");
                     }
                   }
                 },

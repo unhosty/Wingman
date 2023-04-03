@@ -3,6 +3,8 @@ import 'package:demo/screens/home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
+import '../dialog.dart';
+
 class DetailsPage extends StatelessWidget {
   DetailsPage({required this.jwt, super.key});
   final TextEditingController _emailC = TextEditingController();
@@ -78,7 +80,10 @@ class DetailsPage extends StatelessWidget {
                           await auth.addData(jwt, _nameC.text, _emailC.text);
                       if (res != null) {
                         if (res['status']) {
+
                           print("DATA added succesfully");
+                          // show a snackbar
+                      
                           Navigator.pushReplacement(
                             context,
                             MaterialPageRoute(
@@ -86,11 +91,14 @@ class DetailsPage extends StatelessWidget {
                             ),
                           );
                         } else {
+                      dialogBBox(context, res['response']);
+
                           print(res['response']);
                           print("DATA could not added. try again later");
                         }
                         return;
                       }
+                      dialogBBox(context, res['response']);
                       print("WONG INPUT");
                       print(res['response']);
                     }

@@ -129,10 +129,20 @@ class _PhoneNumberPageState extends State<PhoneNumberPage> {
                           verifyPressed = false;
                         });
                         if (reqID == null) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text("OTP could not be sent. Try again later"),
+                            ),
+                          );
                           print("OTP could not be sent");
                           print("Try again later");
                           return;
                         }
+                            ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text("OTP sent successfully."),
+                            ),
+                          );
                         print("OTP sent successfully check phone");
                         Navigator.push(
                             context,
